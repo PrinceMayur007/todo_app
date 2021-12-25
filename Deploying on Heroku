@@ -25,3 +25,31 @@ we will write:
 web:gunicorn app:app
 
 in it to tell it to deploy the app.
+
+
+check whether herokuCLI working. type:
+heroku
+
+in terminal
+
+if running type:
+
+heroku login 
+
+and login with your credentials
+
+then type:
+
+git init
+
+git add .
+
+git commit -m "Initial Commit"
+
+create a heroku project:
+
+heroku create todo_princem007
+
+where todo_princem007 is project name.
+
+
