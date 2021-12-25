@@ -1,0 +1,27 @@
+
+Download and Install Heroku CLI:
+https://devcenter.heroku.com/articles/heroku-cli
+
+Make a account in Heroku:
+https://www.heroku.com
+
+Deploying guide:
+https://devcenter.heroku.com/articles/git
+
+
+now, in your virtualenv intall guni corn:
+        pip install gunicorn
+
+with gunicorn you can serve your application in multiple threads 
+
+now you will freeze the application, (means it will enlist required packages in file.)
+        pip freeze > requirements.txt
+
+
+After this we will make new file called 'Procfile'. This will use Heroku to deploy the application. 
+
+we will write:
+
+web:gunicorn app:app
+
+in it to tell it to deploy the app.

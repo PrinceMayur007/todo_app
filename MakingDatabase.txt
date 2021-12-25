@@ -1,0 +1,167 @@
+Go through InitialSetup, and then IntroReadme
+----------------------------------------------
+-------------------------
+Making database in flask.
+-------------------------
+
+1. Move to app.py file.
+
+2. You have to make class here, and have to mention which database you will gonna use,
+    fields you want and its type, etc.
+
+3. you need to install flask-sqlalchemy package.
+            pip install flask-sqlalchemy
+Note: make sure you have your virtualenv active in terminal
+
+4. now add 
+            from flask_sqlalchemy import SQLAlchemy
+
+type this in cmdline will give you version info: 
+
+flask --version 
+
+
+5. you have add configuration for it now
+        app.config['SQLALCHEMY_DATABASE_URI'] = 
+
+    when you search SQLALCHEMY_DATABASE_URI on google, it will show this page:
+
+        https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/
+
+6. here you will see configuration info, you can choose from 
+    sqlite or mysql
+
+7.  sqlite:////tmp/test.db
+
+this is example for sqlite connection make test database in tmp folder.
+ we will use  sqlite:///test.db, we want database in same folder as app.py
+
+8.  app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
+
+
+9. next line type: 
+        db = SQLAlchemy(app)
+
+10. this will be code so far:
+
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
+db = SQLAlchemy(app)
+
+@app.route("/")
+def hello_world():
+    return render_template('index.html')
+    # return "<p>Hello, World!</p>"
+
+@app.route("/products")
+def product():
+    return "<p>this is my product page</p>"
+
+#ref IntroReadme
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+11. after you server run reloads you will see warning in terminal:
+
+DeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and 
+will be disabled by default in the future.  Set it to True or False to suppress this warning.
+
+SQLALCHEMY_TRACK_MODIFICATIONS // this is used for signal emiting
+find more in documentation. we will set it to false for now, so we dont get warning in future.
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+code now: 
+
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+#write class here ref. next point i.e 12
+
+@app.route("/")
+def hello_world():
+    return render_template('index.html')
+    # return "<p>Hello, World!</p>"
+
+@app.route("/products")
+def product():
+    return "<p>this is my product page</p>"
+
+#ref IntroReadme
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+12. now we write class to create table and content space in database.
+ref above code to where to write class.
+
+class Todo(db.Model):
+    sno = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(200), nullable = False) # wont be blank
+    desc = db.Column(db.String(500), nullable = False)
+    date_created = db.Column(db.DateTime, default = datetime.utcnow)
+    # we have to import datetime
+    # add at top: from datetime import datetime
+    def __repr__(self) -> str:
+        return f"{self.sno} - {self.title}"
+
+Q. What function __repr__ do?
+-> repr() returns a string that holds a printable representation of an object. This is used to define a query, i.e. it will bale to pick unique.
+    we made f String
+            f"{self.sno} - {self.title}"
+            we want to sno and title
+
+    when we do query_all() to show the records it will return objects that will be address terrible way to display records. so we put sno and title so when 
+    we query_all it will return printable statement which makes sense.
+
+
+    F-strings provide a way to embed expressions inside string literals
+
+
+run the app after doing this. 
+
+
+Now open python in new terminal. virtualenv should be active.
+python
+then type:
+from app import db +Enterkey
+db.create_all()  +Enterkey
+
+you will see database got created todo.db right side.
+
+View Your database
+-------------------
+now search 'sqlite viewer' in google search
+open sqlite viewer ad drag and drop your todo.db in it or
+browse the file.
+
+it will render your database. 
+no rows untill now, we will populate it afterwards
+
+
+13. exit() from python in terminal 
+
+
+
+
+you can refer quickstart documentation of flask.
+
+
+we installed jinja2 snippet kit extension
+What is Jinja?
+-> Jinja2 is a modern day templating language for Python developers. It was made after Django's template.
+ It is used to create HTML, XML or other markup formats that are returned to the user via an HTTP request.
+ Jinja is a web template engine for the Python programming language. It was created by Armin Ronacher
+
+
+
+

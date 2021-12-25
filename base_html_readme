@@ -1,0 +1,21 @@
+<!--{# 
+    template inheritance in jinja
+    suppose you have 100 html templates and have to change a nav bar or footer, you have to change for all the template manually.
+    but if you have base template you can do it there and changes will be made all all the pages.  
+
+    Add in this file which is common to all html file like navbar, footer, etc.
+ #}-->
+
+
+
+  <!--{# Beech ka dusre file se add kardo
+        we will use jblock ie. jinja block
+        type jblock and enter, jinja block will appear, given it a name inner body
+        to reflect this in you html file ie. index.html:
+        same block code down you have to copy, put start tag at start and end tag at end of index.html,
+        and add a line above start tag, to show path for this file:
+        type jextend + Enter and put base.html as fiel name.
+        it will look like this:
+        {% extends 'base.html' %}
+        
+        #}-->

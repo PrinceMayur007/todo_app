@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block innerbody %}
+    
+    <div class="container mt-4">
+        
+        <h2 class="text-center display-6 mt-5 pt-5">TODOs List</h2>
+
+        <form action="/" method="POST">
+        <!--action="/" method="POST" to connect with flask-->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <!--name here is given for its name in database when linking, we put title in app.py for title in database-->
+            <input type="title" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+            <div id="titleHelp" class="form-text">Add an item to the list</div>
+        </div>
+        <div class="form-group">
+            <label for="desc" class="form-label">Description</label>
+            <textarea type="description" class="form-control" name="desc" id="desc" rows="3"></textarea>
+        </div>
+        <!--type="submit"-->
+        <button type="submit" id="add" class="btn btn-primary my-3 py-2 px-3 shadow p-3 mb-5 rounded">Add to List</button>
+    </form>
+
+
+        <div id="items">
+            <h2 class="my4">Your TODOs:</h2>
+            
+                
+                    <!--
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Coffee</td>
+                        <td>You need coffee as you are a coder.</td>
+                        <td></td>
+                    </tr>
+                    -->
+                    <!--if you write jfor it will get you jinja code from snippet kit you downloaded as extension.
+                        jinja varuable are written in curly brackets, dont mention double curly brackets in html comments. it will give you error
+                        in jinja. caz this is not comment in jinja, this is comment in html.
+                        {# {{}} #} 
+                        above worked caz we used double brackets in {# .. #} this is used for comments in jinja.
+                        now we put todo.sno there in first row if we do that it will print it perfectly but
+                        if you delete that row in html interface. It will make space for it, and not continue from that number.
+                        suppose if you delete 3, it will display 1,2,direct 4
+                        you can you loop.index, so your primary key is preserved.
+                    -->
+                    {% if allTodo|length == 0 %}
+                        
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                          </symbol>
+                    </svg>
+                    <div class="alert alert-primary d-flex align-items-center mt-4" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                          <b id="no_data_alert"></b> You may add new ones with the above form.
+                        </div>
+                   
+                    {% else %}
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sr. No.</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Timestamp</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                    {% for todo in allTodo %}
+                    <tr>
+                        <th scope="row">{{loop.index}}</th>
+                        <td>{{todo.title}}</td>
+                        <td>{{todo.desc}}</td>
+                        <td>{{todo.date_created}}</td>
+                        <td>
+                            <!--CRUD Operations Create, Read, Update, Delete-->
+                            <a href="/update/{{todo.sno}}"><button type="button" class="btn btn-sm btn-outline-info text-black shadow rounded">Update</button></a>
+                            <a href="/delete/{{todo.sno}}"><button type="button" class="btn btn-sm btn-danger mx-1 shadow rounded">Delete</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock innerbody %}

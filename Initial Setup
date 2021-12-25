@@ -1,0 +1,23 @@
+--------------
+Initial Setup
+--------------
+1. Install python 3 on your system. 
+
+2. Opened flash2021 in vs code and installed virtualenv via vscode terminal (pip install virtualenv).
+
+3. set 'virtualenv env', this will make virtual environment to you to code freely without frekking out about changes in your original python installation.
+ This will make env folder.
+    Suppose you want to use same package version (Eg. 1.2 version for this project and 1.8 version for other project so this changes you can do in virtualenv rather changing your original installation settings for every project.)
+
+4. Activating the env - we have actvate the virtualenv we created to shift to that workspace.
+type .\env\Scripts\activate.ps1    //pro tip: use tab for autocomplete and click enter. ps1 for powershell, bat for cmd.
+
+Note: If you getting an error, open you powershell(admin), press windows+x, and type Set-ExecutionPolicy unrestricted and then Y then Enter. Close the powershell. and try the cmd again for activating.
+
+5. Now you can see (env) written at start in terminal path. 
+
+6. pip install flask -- now flask will be intalled only for this project.
+
+7. now you can create multiple terminals in vs code by clicking on plus icon at top-right of terminal.
+Pro Tip: use first terminal for installations and use second to run the application.
+Note: if (env) is not displayed on new terminal, activate it via same cmd type:  .\env\Scripts\activate.ps1
