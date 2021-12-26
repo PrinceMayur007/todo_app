@@ -64,7 +64,10 @@ git remote - v
 
 after this you will have to push the files:
 
-git push heroku master
+git push heroku main
+
+Note: This should be main, as git changed its default branch to 'main'.
+https://stackoverflow.com/questions/45561987/heroku-is-giving-me-method-not-allowed
 
 
 Now it got deployed to link given there. 
