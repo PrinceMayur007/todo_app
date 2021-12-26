@@ -22,7 +22,7 @@ After this we will make new file called 'Procfile'. This will use Heroku to depl
 
 we will write:
 
-web:gunicorn app:app
+web: gunicorn app:app
 
 in it to tell it to deploy the app.
 
@@ -53,3 +53,19 @@ heroku create todo_princem007
 where todo_princem007 is project name.
 
 
+https://todo-princem.herokuapp.com/ | https://git.heroku.com/todo-princem.git
+
+you will se this links after creating.
+
+your files will uploaded to heroku git. you can see them:
+
+git remote - v
+
+
+after this you will have to push the files:
+
+git push heroku master
+
+
+Now it got deployed to link given there. 
+Save that link or you can visit to you heroku account to see the app deployed.
