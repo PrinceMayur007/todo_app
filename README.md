@@ -13,7 +13,9 @@ This service calls a local sqlite database. Please see the flask documentation f
 
 This projet was written using Visual Studio Code.
 
+You can visit the app here: https://todo-princem.herokuapp.com/
 
+`Note: This is only for personal use. Commercial use of this link is not allowed.`
 
 
 ## Features
