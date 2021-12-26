@@ -86,7 +86,7 @@ The app is deployed on Heroku (free for personal use).
 
 Contributions are always welcome!
 
-Please take a look at [contributing](https://github.com/) guidelines if you're interested in helping!
+Please take a look at [contributing](https://github.com/PrinceMayur007/todo_app/blob/main/contributing.md) guidelines if you're interested in helping!
 
 Please adhere to this project's `code of conduct`.
 
