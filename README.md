@@ -1,6 +1,6 @@
 
 
-![ToDo App](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![ToDo App](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/todo_app.png)
 
 
 # TODO App - A beginner app
@@ -73,7 +73,13 @@ The app is deployed on Heroku (free for personal use).
 
 ## Local Guide
 
-- [Quickstart](https://flask.palletsprojects.com/en/2.0.x/quickstart/)
+- [Initial Setup](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/Initial%20Setup)
+- [Intro](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/IntroReadme.txt)
+- [Database Guide](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/MakingDatabase.txt)
+- [base.html template guide](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/base_html_readme)
+- [Deployment of App on Heroku](https://github.com/PrinceMayur007/todo_app/blob/main/local_guide/Deploying%20on%20Heroku)
+
+
 ## Contributing
 
 Contributions are always welcome!
